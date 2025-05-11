@@ -1,0 +1,40 @@
+version: 1
+config:
+- id: disk0
+  type: disk
+  path: /dev/sda
+- id: ptable0
+  type: partition_table
+  table_type: gpt
+  device: disk0
+- id: main-part
+  type: partition
+  device: ptable0
+  size: 100%
+- id: crypt-vol
+  type: dm_crypt
+  volume: main-part
+  key: random
+  cipher: aes-xts-plain64
+  name: cryptroot
+- id: pv0
+  type: lvm_pv
+  volume: crypt-vol
+- id: vg0
+  type: lvm_vg
+  name: vgroot
+  devices:
+  - pv0
+- id: lv-root
+  type: lvm_lv
+  name: root
+  vg: vg0
+  size: 100%
+- id: fs-root
+  type: format
+  fstype: ext4
+  volume: lv-root
+- type: mount
+  id: mount-root
+  device: fs-root
+  path: /
