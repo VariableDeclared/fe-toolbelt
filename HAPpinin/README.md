@@ -1,4 +1,4 @@
-# HAPpinin'
+# HAPpinin'
 
 
 ## Quickstart
