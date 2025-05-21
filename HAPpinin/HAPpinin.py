@@ -50,7 +50,7 @@ def ensure_stress_ng():
 
 def run_stress_ng(cores):
     print(f"Running stress-ng (10 seconds, {cores} CPU stressor)...")
-    result = subprocess.run(["stress-ng", "--cpu", str(cores), "--timeout", "30s", "--metrics-brief"], capture_output=True, text=True)
+    result = subprocess.run(["stress-ng", "--cpu", str(cores), "--timeout", "30m", "--metrics-brief"], capture_output=True, text=True)
     return result.stdout
 
 def main():
