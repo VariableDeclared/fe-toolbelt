@@ -13,13 +13,13 @@ $ source happinin/bin/activate
 $ pip install psutil
 ```
 
-### Run it!
+### Run it!
 
 ```
 python3 HAPpinin.py
 ```
 
-## Examples
+## Examples
 
 ```
 $ python3 HAPpinin.py
